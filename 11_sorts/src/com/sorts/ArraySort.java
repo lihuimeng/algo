@@ -37,6 +37,27 @@ public class ArraySort {
         System.out.println("循环次数：" + count);
     }
 
+    /**
+     * 插入排序
+     * @param array
+     * @param size
+     */
+    public static void insertSort(int[] array, int size) {
+        if (size < 2) {
+            return;
+        }
+
+        for (int i = 0; i < size - 1; i++) {
+            int temp = array[i];
+            int index = i;
+            while (index > 0 && array[index-1] > temp) {
+                array[index] = array[index - 1];
+                index--;
+            }
+            array[index] = temp;
+        }
+    }
+
     private static void swap(int[] array, int index1, int index2) {
         int temp = array[index1];
         array[index1] = array[index2];
@@ -45,7 +66,7 @@ public class ArraySort {
 
     public static void main(String[] args) {
         int[] ints = {3, 2, 1, 4, 5, 6, 7, 8};
-        bubbleSort(ints, 8);
+        insertSort(ints, 8);
         System.out.println("123");
     }
 
