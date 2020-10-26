@@ -39,6 +39,7 @@ public class ArraySort {
 
     /**
      * 插入排序
+     *
      * @param array
      * @param size
      */
@@ -50,11 +51,35 @@ public class ArraySort {
         for (int i = 0; i < size - 1; i++) {
             int temp = array[i];
             int index = i;
-            while (index > 0 && array[index-1] > temp) {
+            while (index > 0 && array[index - 1] > temp) {
                 array[index] = array[index - 1];
                 index--;
             }
             array[index] = temp;
+        }
+    }
+
+    /**
+     * 选择排序
+     * @param array
+     * @param size
+     */
+    public static void selectSort(int[] array, int size) {
+        if (size < 2) {
+            return;
+        }
+
+        for (int i = 0; i < size - 1; i++) {
+
+            int index = i;
+            for (int j = i + 1; j < size - 1; j++) {
+                if (array[j] < array[i]) {
+                    index = j;
+                }
+            }
+            if (index != i) {
+                swap(array, i, index);
+            }
         }
     }
 
@@ -66,7 +91,7 @@ public class ArraySort {
 
     public static void main(String[] args) {
         int[] ints = {3, 2, 1, 4, 5, 6, 7, 8};
-        insertSort(ints, 8);
+        selectSort(ints, 8);
         System.out.println("123");
     }
 
