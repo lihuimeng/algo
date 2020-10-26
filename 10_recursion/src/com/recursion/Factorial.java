@@ -13,7 +13,6 @@ public class Factorial {
             return 1;
         }
 
-        return multiply(num - 1)*num;
+        return multiply(num - 1) * num;
     }
-
 }
