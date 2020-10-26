@@ -111,10 +111,21 @@ public class ArraySort {
         Helper.quickSort(array, 0, size - 1);
     }
 
+    /**
+     * 获取第K大的元素
+     *
+     * @param array
+     * @param size
+     */
+    public static int getIntK(int[] array, int size, int k) {
+
+        return Helper.getIntK(k, array, 0, size - 1);
+    }
+
 
     public static void main(String[] args) {
         int[] ints = {3, 2, 1, 4, 5, 8, 7, 6};
-        quickSort(ints, 8);
+        int intK = getIntK(ints, 8, 6);
     }
 
     private static class Helper {
@@ -190,6 +201,18 @@ public class ArraySort {
         }
 
 
+        public static int getIntK(int k, int[] array, int start, int end) {
+            int partition = partition(array, start, end);
+            if (partition == k - 1) {
+                return array[partition];
+            }
+
+            if (partition > k - 1) {
+                return getIntK(k, array, start, partition - 1);
+            } else {
+                return getIntK(k, array, partition + 1, end);
+            }
+        }
     }
 
 }
